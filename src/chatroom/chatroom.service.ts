@@ -57,6 +57,8 @@ export class ChatroomService {
         chatroomId: true,
       },
     });
+    console.log('name', name);
+    console.log('typeof name', typeof name);
     const chatrooms = await this.prismaService.chatroom.findMany({
       where: {
         id: {
