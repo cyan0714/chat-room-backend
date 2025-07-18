@@ -1,6 +1,7 @@
 import { FriendAddDto } from './dto/friend-add.dto';
 import { Inject, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { User } from '../../generated/prisma';
 
 @Injectable()
 export class FriendshipService {
@@ -85,7 +86,7 @@ export class FriendshipService {
     return '已拒绝';
   }
 
-  async getFriendship(userId: number) {
+  async getFriendship(userId: number, name: string) {
     const friends = await this.prismaService.friendship.findMany({
       where: {
         OR: [
@@ -124,7 +125,10 @@ export class FriendshipService {
       res.push(user);
     }
 
-    return res;
+    if (!name) {
+      return res;
+    }
+    return res.filter((item: User) => item.nickName.includes(name));
   }
 
   async remove(friendId: number, userId: number) {
