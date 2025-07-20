@@ -54,14 +54,17 @@ export class ChatroomController {
   }
 
   @Get('join/:id')
-  async join(@Param('id') id: number, @Query('joinUserId') joinUserId: number) {
+  async join(
+    @Param('id') id: number,
+    @Query('joinUsername') joinUsername: string,
+  ) {
     if (!id) {
       throw new BadRequestException('id 不能为空');
     }
-    if (!joinUserId) {
-      throw new BadRequestException('joinUserId 不能为空');
+    if (!joinUsername) {
+      throw new BadRequestException('joinUsername 不能为空');
     }
-    return this.chatroomService.join(id, joinUserId);
+    return this.chatroomService.join(id, joinUsername);
   }
 
   @Get('quit/:id')
@@ -73,5 +76,16 @@ export class ChatroomController {
       throw new BadRequestException('quitUserId 不能为空');
     }
     return this.chatroomService.quit(id, quitUserId);
+  }
+
+  @Get('findChatroom')
+  async findChatroom(
+    @Query('userId1') userId1: string,
+    @Query('userId2') userId2: string,
+  ) {
+    if (!userId1 || !userId2) {
+      throw new BadRequestException('用户 id 不能为空');
+    }
+    return this.chatroomService.queryOneToOneChatroom(+userId1, +userId2);
   }
 }
