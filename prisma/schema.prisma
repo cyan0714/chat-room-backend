@@ -79,4 +79,12 @@ model ChatHistory {
   updateTime DateTime @updatedAt
 }
 
+model Favorite {
+  id Int @id @default(autoincrement())
+  chatHistoryId Int
+  uerId Int
+  createTime DateTime @default(now())
+  updateTime DateTime @updatedAt
+}
+
 
