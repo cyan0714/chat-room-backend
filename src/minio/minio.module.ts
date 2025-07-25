@@ -9,11 +9,11 @@ import * as Minio from 'minio';
       provide: 'MINIO_CLIENT',
       async useFactory() {
         const client = new Minio.Client({
-          endPoint: 'localhost',
-          port: 9000,
-          useSSL: false,
-          accessKey: 'LYXOYRC6HRE4K5YFU4O2',
-          secretKey: 'DlZCVD1G0muRLtVXedkE4ABoWYKtGK4bmTDR7Yon',
+          endPoint: process.env.MINIO_ENDPOINT,
+          port: Number(process.env.MINIO_PORT),
+          useSSL: process.env.MINIO_USE_SSL === 'true',
+          accessKey: process.env.MINIO_ACCESS_KEY,
+          secretKey: process.env.MINIO_SECRET_KEY,
         });
         return client;
       },

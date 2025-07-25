@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { ChatHistory } from '../../generated/prisma';
+// import { ChatHistory } from '../../generated/prisma';
+import { ChatHistory } from '@prisma/client';
 
 export type HistoryDto = Pick<
   ChatHistory,

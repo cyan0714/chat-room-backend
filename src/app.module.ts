@@ -25,9 +25,9 @@ import { FavoriteModule } from './favorite/favorite.module';
       global: true,
       useFactory() {
         return {
-          secret: 'cyan',
+          secret: process.env.JWT_SECRET,
           signOptions: {
-            expiresIn: '30m', // 默认 30 分钟
+            expiresIn: process.env.JWT_EXPIRES_IN,
           },
         };
       },

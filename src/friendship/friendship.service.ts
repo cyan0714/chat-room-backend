@@ -1,7 +1,8 @@
 import { FriendAddDto } from './dto/friend-add.dto';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { User } from '../../generated/prisma';
+// import { User } from '../../generated/prisma';
+import { User } from '@prisma/client';
 
 @Injectable()
 export class FriendshipService {
