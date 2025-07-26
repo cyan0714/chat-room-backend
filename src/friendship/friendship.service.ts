@@ -199,6 +199,7 @@ export class FriendshipService {
           username: true,
           nickName: true,
           email: true,
+          headPic: true,
         },
       });
       res.push(user);

@@ -11,6 +11,7 @@ import { APP_GUARD } from '@nestjs/core';
 import { FriendshipModule } from './friendship/friendship.module';
 import { ChatroomModule } from './chatroom/chatroom.module';
 import { MinioModule } from './minio/minio.module';
+import { OssModule } from './oss/oss.module';
 import { ChatModule } from './chat/chat.module';
 import { ChatHistoryModule } from './chat-history/chat-history.module';
 import { FavoriteModule } from './favorite/favorite.module';
@@ -35,6 +36,7 @@ import { FavoriteModule } from './favorite/favorite.module';
     FriendshipModule,
     ChatroomModule,
     MinioModule,
+    OssModule,
     ChatModule,
     ChatHistoryModule,
     FavoriteModule,
