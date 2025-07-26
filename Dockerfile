@@ -2,13 +2,19 @@ FROM node:18 as build-stage
 
 WORKDIR /app
 
+COPY package.json pnpm-lock.yaml ./
+
+RUN npm config set registry https://registry.npmmirror.com/
+
+RUN npm install -g pnpm
+RUN pnpm install
+
 COPY . .
 
 RUN npx prisma generate
 
 RUN npm run build
 
-# production stage
 FROM node:18 as production-stage
 
 COPY --from=build-stage /app/dist /app
